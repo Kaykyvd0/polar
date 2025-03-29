@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POLAR Design - Serviços Criativos</title>
+    <style>
+        :root {
+            --primary: #2d3436;
+            --secondary: #000000;
+            --accent: #00cec9;
+            --light: #dfe6e9;
+            --dark: #1e272e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f6fa;
+            color: var(--primary);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .social-links {
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--light);
+            text-decoration: underline;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        
+        .portfolio-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 3rem;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(108, 92, 231, 0.2);
+        }
+        
+        .portfolio-img-container {
+            position: relative;
+            height: 350px;
+            overflow: hidden;
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-info {
+            padding: 2.5rem;
+        }
+        
+        .portfolio-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .portfolio-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .portfolio-desc {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+        
+        .portfolio-details {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .detail-item {
+            flex: 1;
+        }
+        
+        .detail-label {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .detail-value {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        .portfolio-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .pricing-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .pricing-header {
+            padding: 1.5rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+        }
+        
+        .pricing-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-price {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .pricing-period {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .pricing-body {
+            padding: 1.5rem;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .pricing-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--accent);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .pricing-footer {
+            padding: 0 1.5rem 1.5rem;
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: var(--dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-tiktok {
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem auto;
+            max-width: 250px;
+        }
+        
+        .btn-tiktok::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xNi44IDhIMTJ2MTJjMCAxLjY1LTEuMzUgMy0zIDNzLTMtMS4zNS0zLTNzMS4zNS0zIDMtM2guNWMuNSAwIC45LS40LjktLjlWOC43QzYuNyA4LjMgNS4xIDcgMy41IDcgMS42IDcgMCA4LjYgMCAxMGMwIDEuNjUgMS4zNSAzIDMgM3MzLTEuMzUgMy0zVjRjMC0uNS40LS45LjktLjloMy4zYzEuMTUgMCAyLjEtLjk1IDIuMS0yLjFzLjk1LTIuMSAyLjEtMi4xIDIuMS45NSAyLjEgMi4xLS45NSAyLjEtMi4xIDIuMXoiLz48L3N2Zz4=') no-repeat center center;
+            background-size: contain;
+            margin-right: 8px;
+        }
+        
+        .highlight {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff7675;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-table {
+                grid-template-columns: 1fr;
+            }
+            
+            .portfolio {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">POLAR DESIGN</div>
+            <div class="tagline">Identidade Visual e Edições Profissionais</div>
+            <div class="social-links">
+                <a href="https://tiktok.com/@polar9681" target="_blank">TikTok</a>
+                <a href="https://youtube.com/@polar01p" target="_blank">YouTube</a>
+            </div>
+        </div>
+    </header>
+    
+    <section class="portfolio-section">
+        <div class="container">
+            <h2 class="section-title">Trabalhos Recentes</h2>
+            <div class="portfolio">
+                <div class="portfolio-item">
+                    <img src="img/exemplo1.jpg" alt="Projeto 1" class="portfolio-img">
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Logotipo Empresarial</h3>
+                        <p class="portfolio-desc">Criação de identidade visual completa para marca de tecnologia, incluindo logo, cores e aplicações.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="img/exemplo2.jpg" alt="Projeto 2" class="portfolio-img">
+                    <div class="portfolio-info">
+                        <h3 class="portfolio-title">Edição de Vídeo Promocional</h3>
+                        <p class="portfolio-desc">Edição profissional de vídeo de 5 minutos para campanha de mídia social em resolução 2K.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">Nossos Planos</h2>
+            <div class="pricing-table">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">MENSAL Simples</h3>
+                        <div class="pricing-price">R$45</div>
+                        <div class="pricing-period">por mês</div>
+                    </div>
+                    <div class="pricing-body">
+                        <p>Direito a 5 edições de fotos ou edições de logos</p>
+                        <ul class="pricing-features">
+                            <li>Edições do seu gosto</li>
+                            <li>Logo do sua marca canal ou conta</li>
+                            <li>Chat e atendimento</li>
+                            <li>Tudo HD1080P</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="https://tiktok.com/@polar9681" class="btn">Escolher Plano</a>
+                    </div>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="highlight">#Melhor</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">MENSAL Básico</h3>
+                        <div class="pricing-price">R$65</div>
+                        <div class="pricing-period">por mês</div>
+                    </div>
+                    <div class="pricing-body">
+                        <p>Direito a 10 edições de fotos ou vídeos de até 10 minutos vídeos curtos ou Logos</p>
+                        <ul class="pricing-features">
+                            <li>Edições de vídeos médias HD1080P</li>
+                            <li>Logos ou edições em 200MP</li>
+                            <li>Chat aberto 24H</li>
+                            <li>Vídeos de até 10 minutos ou curtos de mínimo 1 minuto</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="https://tiktok.com/@polar9681" class="btn">Escolher Plano</a>
+                    </div>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">MENSAL PRO</h3>
+                        <div class="pricing-price">R$115</div>
+                        <div class="pricing-period">por mês</div>
+                    </div>
+                    <div class="pricing-body">
+                        <p>20 edições de logos, convites Fotos, vídeos, banner, canal do YouTube etc...</p>
+                        <ul class="pricing-features">
+                            <li>Edições avançadas com canva pro, cap CUT pro, Photoshop pro FDH4K</li>
+                            <li>Chat 24H</li>
+                            <li>Vídeos de até 25 minutos ou vídeos curtos com adções completas</li>
+                            <li>Convites de casamentos aniversário entre outros</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="https://tiktok.com/@polar9681" class="btn">Escolher Plano</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pricing-table" style="margin-top: 2rem;">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Pacote BASIC</h3>
+                        <div class="pricing-price">R$24,99</div>
+                    </div>
+                    <div class="pricing-body">
+                        <ul class="pricing-features">
+                            <li>Logotipo e Identidade Exclusivos</li>
+                            <li>Edições de todos os tipos BASIC</li>
+                            <li>Presença Online</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="https://tiktok.com/@polar9681" class="btn">Escolher Plano</a>
+                    </div>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Pacote AVANÇADO</h3>
+                        <div class="pricing-price">R$39,99</div>
+                    </div>
+                    <div class="pricing-body">
+                        <ul class="pricing-features">
+                            <li>Identidade Visual Exclusiva Avançada</li>
+                            <li>Edições de Vídeo FHD2K</li>
+                            <li>Campanhas de Mídia Social</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="https://tiktok.com/@polar9681" class="btn">Escolher Plano</a>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="https://tiktok.com/@polar9681" class="btn btn-tiktok">Fale comigo pelo TikTok</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 POLAR Design. Todos os direitos reservados.</p>
+            <p>TIK@POLAR9681 | YTB@POLAR01P</p>
+        </div>
+    </footer>
+</body>
+</html>
